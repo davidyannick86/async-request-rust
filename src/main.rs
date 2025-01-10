@@ -4,7 +4,7 @@ struct Response {
     origin: String,
 }
 
-static URL: &'static str = "https://httpbin.org/ip";
+static URL: &'static str = "https://httpbin.org/ip"; // * URL of the server.
 
 // * This function prints the status code, the status message and the headers of the response.
 fn print_response_infos(res: &reqwest::Response) -> Result<(), Box<dyn std::error::Error>> {
@@ -41,7 +41,7 @@ fn get_ip_from_json(json: &str) -> Result<String, Box<dyn std::error::Error>> {
     Ok(response.origin)
 }
 
-#[tokio::main]
+#[tokio::main] // ! The tokio::main attribute is used to define the main function as an asynchronous function.
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // * Make a GET request to the server.
     let response = reqwest::get(URL).await?;
